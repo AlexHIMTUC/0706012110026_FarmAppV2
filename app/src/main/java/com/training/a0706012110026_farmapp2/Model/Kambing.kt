@@ -12,11 +12,11 @@ open class Kambing(override var name: String?, override var age: Int?): Animal()
         set(value) {}
 
     override fun feed(rumput: Rumput) : String{
-        return "Aku makan rumput bro"
+        return "Kamu memberikan makan hewan dengan rerumputan"
     }
 
     override fun voice() : String {
-        return "MBEKKKKKK"
+        return "BLEHHHH"
     }
 
     constructor(parcel: Parcel) : this(

@@ -76,18 +76,27 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
         }
 
         binding.filterAll.setOnClickListener{
+            resetAllBtn()
+            it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("All")
+
         }
 
         binding.filterKambing.setOnClickListener{
+            resetAllBtn()
+            it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("Kambing")
         }
 
         binding.filterAyam.setOnClickListener{
+            resetAllBtn()
+            it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("Ayam")
         }
 
         binding.filterSapi.setOnClickListener{
+            resetAllBtn()
+            it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("Sapi")
         }
 
@@ -108,6 +117,8 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
         setupRecyclerView()
         adapter.notifyDataSetChanged()
     }
+
+
 
     private fun CheckPermissions() {
 
@@ -166,6 +177,16 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
             }
         }
 
+    }
+
+    fun resetAllBtn(){
+        binding.filterAll.setBackgroundColor(Color.parseColor("#E6DBDB"))
+
+        binding.filterKambing.setBackgroundColor(Color.parseColor("#E6DBDB"))
+
+        binding.filterAyam.setBackgroundColor(Color.parseColor("#E6DBDB"))
+
+        binding.filterSapi.setBackgroundColor(Color.parseColor("#E6DBDB"))
     }
 
     override fun onResume() {

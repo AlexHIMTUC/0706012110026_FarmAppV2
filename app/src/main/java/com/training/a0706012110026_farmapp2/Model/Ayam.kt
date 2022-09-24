@@ -18,11 +18,11 @@ open class Ayam(override var name: String?, override var age: Int?): Animal(), P
     }
 
     override fun feed(bijiBijian: BijiBijian) : String{
-        return "Aku makan biji gaisssws"
+        return "Kamu memberikan makan hewan dengan biji-bijian"
     }
 
     override fun voice() : String {
-        return "Kukuruyukkkkkk"
+        return "Bock bock bock"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

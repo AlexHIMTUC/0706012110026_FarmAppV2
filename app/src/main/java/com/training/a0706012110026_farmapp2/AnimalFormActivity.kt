@@ -91,7 +91,8 @@ class AnimalFormActivity : AppCompatActivity() {
         binding.animalType.check(radioBtn)
 
         binding.inputUsia.editText?.setText(animal.age.toString())
-        if(animal.imageUri != null){
+        Log.d("TAG", "setValueToInput: ${animal.imageUri}")
+        if(animal.imageUri != ""){
             binding.inputCurImage.setImageURI(Uri.parse(animal.imageUri))
         }
 

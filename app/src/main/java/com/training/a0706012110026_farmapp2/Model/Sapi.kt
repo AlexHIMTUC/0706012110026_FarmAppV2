@@ -6,7 +6,7 @@ import com.training.a0706012110026_farmapp2.Interface.Food
 
 open class Sapi(override var name: String?, override var age: Int?) : Animal(), Parcelable {
     override fun feed(rumput: Rumput) : String {
-        return "Aku makan rumputt"
+        return return "Kamu memberikan makan hewan dengan rerumputan"
     }
 
     override var type: String?
