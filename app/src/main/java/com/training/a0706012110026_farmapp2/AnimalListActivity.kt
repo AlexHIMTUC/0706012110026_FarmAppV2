@@ -30,7 +30,7 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimalListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
+        supportActionBar?.title = "Data Animal"
         adapter = AnimalListAdapter(animalArr, this, this)
         listener()
         setupRecyclerView()
@@ -196,6 +196,6 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
     }
 
     override fun onToastCardClick(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 }
