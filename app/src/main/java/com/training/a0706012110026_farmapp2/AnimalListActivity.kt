@@ -52,6 +52,7 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
                     for(animal in animalArr){
                         if(animal.name.equals(name) && animal.age == age){
                             animalArr.remove(animal)
+                            break
                         }
                     }
 
@@ -61,8 +62,7 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
                     }).setAnchorView(binding.fabAddAnimal).show()
                     checker()
                     updateListAnimal(curCategory)
-                    Log.d("awda", "onCardClick: ${curCategory}")
-                    Log.d("awda", "onCardClick: ${position}")
+
                 }
                 .setNegativeButton("Tidak") { dialog, id ->
                     val snackBar = Snackbar.make(binding.root, "Hewan tidak jadi dihapus", Snackbar.LENGTH_SHORT)
