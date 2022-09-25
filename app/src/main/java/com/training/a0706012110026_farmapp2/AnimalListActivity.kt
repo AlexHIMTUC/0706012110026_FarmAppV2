@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -25,7 +26,7 @@ import com.training.a0706012110026_farmapp2.databinding.ActivityAnimalListBindin
 class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
     private lateinit var binding : ActivityAnimalListBinding
     private lateinit var adapter : AnimalListAdapter
-
+    private var curCategory : String = "All"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimalListBinding.inflate(layoutInflater)
@@ -54,7 +55,9 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
                         snackBar.dismiss()
                     }).setAnchorView(binding.fabAddAnimal).show()
                     checker()
-                    adapter.notifyDataSetChanged()
+                    updateListAnimal(curCategory)
+                    Log.d("awda", "onCardClick: ${curCategory}")
+                    Log.d("awda", "onCardClick: ${position}")
                 }
                 .setNegativeButton("Tidak") { dialog, id ->
                     val snackBar = Snackbar.make(binding.root, "Hewan tidak jadi dihapus", Snackbar.LENGTH_SHORT)
@@ -79,28 +82,32 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
             resetAllBtn()
             it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("All")
-
+            curCategory = "All"
         }
 
         binding.filterKambing.setOnClickListener{
             resetAllBtn()
             it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("Kambing")
+            curCategory = "Kambing"
         }
 
         binding.filterAyam.setOnClickListener{
             resetAllBtn()
             it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("Ayam")
+            curCategory = "Ayam"
         }
 
         binding.filterSapi.setOnClickListener{
             resetAllBtn()
             it.setBackgroundColor(Color.parseColor("#2CEC0A"))
             updateListAnimal("Sapi")
+            curCategory = "Sapi"
         }
 
     }
+
 
     private fun updateListAnimal(type : String){
         var result = ArrayList<Animal>()
@@ -192,7 +199,7 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
     override fun onResume() {
         super.onResume()
         checker()
-        adapter.notifyDataSetChanged()
+        updateListAnimal(curCategory)
     }
 
     override fun onToastCardClick(msg: String) {
