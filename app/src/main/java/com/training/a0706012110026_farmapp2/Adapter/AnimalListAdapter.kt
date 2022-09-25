@@ -43,10 +43,10 @@ class AnimalListAdapter(val listAnimal: ArrayList<Animal>, val cardClick: CardCl
             if(data.imageUri?.isNotEmpty() == true)
                 binding.imageUri.setImageURI(Uri.parse(data.imageUri))
             binding.editAnimal.setOnClickListener {
-                cardClick.onCardClick("edit", adapterPosition)
+                cardClick.onCardClick("edit", adapterPosition, data.name, data.age)
             }
             binding.deleteAnimal.setOnClickListener {
-                cardClick.onCardClick("delete", adapterPosition)
+                cardClick.onCardClick("delete", adapterPosition, data.name, data.age)
             }
         }
     }
