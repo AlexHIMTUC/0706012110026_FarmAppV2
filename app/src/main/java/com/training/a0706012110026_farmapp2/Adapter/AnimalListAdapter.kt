@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.training.a0706012110026_farmapp2.DB.AnimalDatabase.Companion.animalArr
 import com.training.a0706012110026_farmapp2.Interface.CardClick
 import com.training.a0706012110026_farmapp2.Interface.CardToastClick
 import com.training.a0706012110026_farmapp2.Model.*
@@ -43,10 +44,10 @@ class AnimalListAdapter(val listAnimal: ArrayList<Animal>, val cardClick: CardCl
             if(data.imageUri?.isNotEmpty() == true)
                 binding.imageUri.setImageURI(Uri.parse(data.imageUri))
             binding.editAnimal.setOnClickListener {
-                cardClick.onCardClick("edit", adapterPosition, data.name, data.age)
+                cardClick.onCardClick("edit", data)
             }
             binding.deleteAnimal.setOnClickListener {
-                cardClick.onCardClick("delete", adapterPosition, data.name, data.age)
+                cardClick.onCardClick("delete", data)
             }
         }
     }

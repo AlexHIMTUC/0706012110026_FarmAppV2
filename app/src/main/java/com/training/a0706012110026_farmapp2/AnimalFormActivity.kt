@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isEmpty
 import com.google.android.material.snackbar.Snackbar
@@ -147,6 +148,20 @@ class AnimalFormActivity : AppCompatActivity() {
             binding.inputUsia.error = ""
         }
 
+        if(animalPosition == -1){
+            for (animall in animalArr){
+                if(animall.name!!.equals(animal.name) && animall.age!!.equals(animal.age) && animall.type!!.equals(animal.type)){
+                    isCompleted = false
+                    val snackBar = Snackbar.make(binding.root, "Hewan telah ada, silahkan input hewan yang berbeda", Snackbar.LENGTH_SHORT)
+                    snackBar.setAction("Dismiss", View.OnClickListener {
+                        snackBar.dismiss()
+                    }).show()
+                    break
+                }
+            }
+        }
+
+
 
 
         if (isCompleted){
@@ -160,8 +175,7 @@ class AnimalFormActivity : AppCompatActivity() {
                 animalArr.set(animalPosition, animal)
                 setResult(2)
             }
-            Log.d("awdaw", imageUri)
-            Log.d("wadaw", "wadawd")
+
             finish()
 
         }

@@ -39,22 +39,18 @@ class AnimalListActivity : AppCompatActivity(), CardClick, CardToastClick {
         CheckPermissions()
     }
 
-    override fun onCardClick(type: String, position: Int, name :String?, age :Int?) {
+    override fun onCardClick(type: String, animal: Animal) {
         if(type === "edit"){
             val intent = Intent(this, AnimalFormActivity::class.java).apply{
-                putExtra("position", position)
+
+                putExtra("position", animalArr.indexOf(animal))
             }
             startActivityForResult(intent, 10)
         }else{
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Apakah anda yakin ingin menghapus data ini ?")
                 .setPositiveButton("Iya") { dialog, id ->
-                    for(animal in animalArr){
-                        if(animal.name.equals(name) && animal.age == age){
-                            animalArr.remove(animal)
-                            break
-                        }
-                    }
+                    animalArr.remove(animal)
 
                     val snackBar = Snackbar.make(binding.root, "Hewan telah dihapus", Snackbar.LENGTH_SHORT)
                     snackBar.setAction("Dismiss", View.OnClickListener {
